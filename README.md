@@ -5,7 +5,7 @@ A [Spring](https://spring.io/) REST API developed based on the free course from 
 ## First steps
 
 - Install [VSCode Spring plugin](https://spring.io/tools) or choose another IDE
-- Install Java SDK (JDK 11 >) and set `JAVA_HOME` environment variable to your system pointing to the SDK path
+- Install Java SDK (JDK 11 >) and set `JAVA_HOME` environment variable to your system pointing to the SDK path. Note: We developed using Java 14
 
 ## Usage
 
