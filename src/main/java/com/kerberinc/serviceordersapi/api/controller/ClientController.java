@@ -3,6 +3,8 @@ package com.kerberinc.serviceordersapi.api.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import com.kerberinc.serviceordersapi.domain.model.Client;
 import com.kerberinc.serviceordersapi.domain.repository.ClientRepository;
 
@@ -44,14 +46,14 @@ public class ClientController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Client add(@RequestBody Client client) {
+	public Client add(@Valid @RequestBody Client client) {
 		return clientRepository.save(client);
 	}
 
 	@PutMapping("/{clientId}")
 	public ResponseEntity<Client> update(
 		@PathVariable Long clientId,
-		@RequestBody Client client
+		@Valid @RequestBody Client client
 	) {
 		
 		if (!clientRepository.existsById(clientId)) {
