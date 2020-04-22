@@ -2,24 +2,22 @@ package com.kerberinc.serviceordersapi.api.controller;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import com.kerberinc.serviceordersapi.domain.model.Client;
+import com.kerberinc.serviceordersapi.domain.repository.ClientRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ClientController {
 
-	@PersistenceContext
-	private EntityManager manager;
+	@Autowired
+	private ClientRepository clientRepository;
 
     @GetMapping("/clients")
     public List<Client> index() {
-		return manager.createQuery("from Client", Client.class)
-			.getResultList();
+		return clientRepository.findAll();
     }
 
 }
