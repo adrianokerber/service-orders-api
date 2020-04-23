@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import com.kerberinc.serviceordersapi.domain.model.Client;
 import com.kerberinc.serviceordersapi.domain.repository.ClientRepository;
+import com.kerberinc.serviceordersapi.domain.service.ClientStorageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,9 @@ public class ClientController {
 	@Autowired
 	private ClientRepository clientRepository;
 
+	@Autowired
+	private ClientStorageService clientStorageService;
+
     @GetMapping
     public List<Client> index() {
 		return clientRepository.findAll();
@@ -47,7 +51,7 @@ public class ClientController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Client add(@Valid @RequestBody Client client) {
-		return clientRepository.save(client);
+		return clientStorageService.save(client);
 	}
 
 	@PutMapping("/{clientId}")
@@ -61,7 +65,7 @@ public class ClientController {
 		}
 
 		client.setId(clientId);
-		client = clientRepository.save(client);
+		client = clientStorageService.save(client);
 
 		return ResponseEntity.ok(client);
 
@@ -74,7 +78,7 @@ public class ClientController {
 			return ResponseEntity.notFound().build();
 		}
 
-		clientRepository.deleteById(clientId);
+		clientStorageService.delete(clientId);
 
 		return ResponseEntity.noContent().build();
 
