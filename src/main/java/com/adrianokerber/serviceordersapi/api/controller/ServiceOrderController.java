@@ -51,7 +51,7 @@ public class ServiceOrderController {
         Optional<ServiceOrder> serviceOrder = serviceOrderRepository.findById(orderId);
 
         if (serviceOrder.isPresent()) {
-            ServiceOrderModel serviceOrderModel = modelMapper.map(serviceOrder, ServiceOrderModel.class);
+            ServiceOrderModel serviceOrderModel = modelMapper.map(serviceOrder.get(), ServiceOrderModel.class);
 
             return ResponseEntity.ok(serviceOrderModel);
         }
