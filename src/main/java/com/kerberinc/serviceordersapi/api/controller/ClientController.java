@@ -33,7 +33,7 @@ public class ClientController {
 	private ClientStorageService clientStorageService;
 
     @GetMapping
-    public List<Client> index() {
+    public List<Client> list() {
 		return clientRepository.findAll();
 	}
 	
