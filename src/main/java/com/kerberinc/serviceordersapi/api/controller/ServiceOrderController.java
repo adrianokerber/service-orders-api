@@ -1,5 +1,7 @@
 package com.kerberinc.serviceordersapi.api.controller;
 
+import javax.validation.Valid;
+
 import com.kerberinc.serviceordersapi.domain.model.ServiceOrder;
 import com.kerberinc.serviceordersapi.domain.service.OrderManagementService;
 
@@ -20,7 +22,7 @@ public class ServiceOrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServiceOrder criate(@RequestBody ServiceOrder serviceOrder) {
+    public ServiceOrder create(@Valid @RequestBody ServiceOrder serviceOrder) {
         return orderManagementService.create(serviceOrder);
     }
 
