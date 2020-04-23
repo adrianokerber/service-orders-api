@@ -2,6 +2,7 @@ package com.adrianokerber.serviceordersapi.api.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -37,13 +38,13 @@ public class ServiceOrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServiceOrder create(@Valid @RequestBody ServiceOrder serviceOrder) {
-        return orderManagementService.create(serviceOrder);
+    public ServiceOrderModel create(@Valid @RequestBody ServiceOrder serviceOrder) {
+        return toModel(orderManagementService.create(serviceOrder));
     }
 
     @GetMapping
-    public List<ServiceOrder> list() {
-        return serviceOrderRepository.findAll();
+    public List<ServiceOrderModel> list() {
+        return toCollectionModel(serviceOrderRepository.findAll());
     }
 
     @GetMapping("/{orderId}")
@@ -51,12 +52,22 @@ public class ServiceOrderController {
         Optional<ServiceOrder> serviceOrder = serviceOrderRepository.findById(orderId);
 
         if (serviceOrder.isPresent()) {
-            ServiceOrderModel serviceOrderModel = modelMapper.map(serviceOrder.get(), ServiceOrderModel.class);
+            ServiceOrderModel serviceOrderModel = toModel(serviceOrder.get());
 
             return ResponseEntity.ok(serviceOrderModel);
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    private ServiceOrderModel toModel(ServiceOrder serviceOrder) {
+        return modelMapper.map(serviceOrder, ServiceOrderModel.class);
+    }
+
+    private List<ServiceOrderModel> toCollectionModel(List<ServiceOrder> serviceOrders) {
+        return serviceOrders.stream()
+            .map(serviceOrder -> toModel(serviceOrder))
+            .collect(Collectors.toList());
     }
 
 }
