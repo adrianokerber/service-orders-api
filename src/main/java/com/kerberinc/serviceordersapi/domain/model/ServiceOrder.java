@@ -12,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity
 public class ServiceOrder {
 
@@ -25,9 +28,14 @@ public class ServiceOrder {
     private String description;
     private BigDecimal price;
 
+    @JsonProperty(access = Access.READ_ONLY)
     @Enumerated(EnumType.STRING)
     private ServiceOrderStatus status;
+
+    @JsonProperty(access = Access.READ_ONLY)
     private LocalDateTime startDate;
+
+    @JsonProperty(access = Access.READ_ONLY)
     private LocalDateTime endDate;
 
     public Long getId() {
