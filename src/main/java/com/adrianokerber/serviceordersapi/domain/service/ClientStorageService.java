@@ -1,8 +1,8 @@
-package com.kerberinc.serviceordersapi.domain.service;
+package com.adrianokerber.serviceordersapi.domain.service;
 
-import com.kerberinc.serviceordersapi.domain.exception.BusinessLogicException;
-import com.kerberinc.serviceordersapi.domain.model.Client;
-import com.kerberinc.serviceordersapi.domain.repository.ClientRepository;
+import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
+import com.adrianokerber.serviceordersapi.domain.model.Client;
+import com.adrianokerber.serviceordersapi.domain.repository.ClientRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

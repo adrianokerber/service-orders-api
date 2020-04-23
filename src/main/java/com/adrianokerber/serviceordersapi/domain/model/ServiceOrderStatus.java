@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.domain.model;
+package com.adrianokerber.serviceordersapi.domain.model;
 
 public enum ServiceOrderStatus {
 

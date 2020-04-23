@@ -1,9 +1,9 @@
-package com.kerberinc.serviceordersapi.api.exceptionhandler;
+package com.adrianokerber.serviceordersapi.api.exceptionhandler;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
-import com.kerberinc.serviceordersapi.domain.exception.BusinessLogicException;
+import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

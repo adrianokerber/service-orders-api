@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.domain.model;
+package com.adrianokerber.serviceordersapi.domain.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -19,7 +19,7 @@ import javax.validation.groups.Default;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.kerberinc.serviceordersapi.domain.ValidationGroups;
+import com.adrianokerber.serviceordersapi.domain.ValidationGroups;
 
 @Entity
 public class ServiceOrder {

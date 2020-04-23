@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.domain.exception;
+package com.adrianokerber.serviceordersapi.domain.exception;
 
 public class BusinessLogicException extends RuntimeException {
 

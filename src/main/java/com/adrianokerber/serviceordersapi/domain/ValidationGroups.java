@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.domain;
+package com.adrianokerber.serviceordersapi.domain;
 
 public class ValidationGroups {
 

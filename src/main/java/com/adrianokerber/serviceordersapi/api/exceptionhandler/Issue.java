@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.api.exceptionhandler;
+package com.adrianokerber.serviceordersapi.api.exceptionhandler;
 
 import java.time.OffsetDateTime;
 import java.util.List;

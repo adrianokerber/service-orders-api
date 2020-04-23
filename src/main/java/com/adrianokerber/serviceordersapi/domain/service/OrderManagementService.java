@@ -1,13 +1,13 @@
-package com.kerberinc.serviceordersapi.domain.service;
+package com.adrianokerber.serviceordersapi.domain.service;
 
 import java.time.OffsetDateTime;
 
-import com.kerberinc.serviceordersapi.domain.exception.BusinessLogicException;
-import com.kerberinc.serviceordersapi.domain.model.Client;
-import com.kerberinc.serviceordersapi.domain.model.ServiceOrder;
-import com.kerberinc.serviceordersapi.domain.model.ServiceOrderStatus;
-import com.kerberinc.serviceordersapi.domain.repository.ClientRepository;
-import com.kerberinc.serviceordersapi.domain.repository.ServiceOrderRepository;
+import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
+import com.adrianokerber.serviceordersapi.domain.model.Client;
+import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
+import com.adrianokerber.serviceordersapi.domain.model.ServiceOrderStatus;
+import com.adrianokerber.serviceordersapi.domain.repository.ClientRepository;
+import com.adrianokerber.serviceordersapi.domain.repository.ServiceOrderRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.kerberinc.serviceordersapi.domain.model;
+package com.adrianokerber.serviceordersapi.domain.model;
 
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.kerberinc.serviceordersapi.domain.ValidationGroups;
+import com.adrianokerber.serviceordersapi.domain.ValidationGroups;
 
 /**
  *  Is a customer

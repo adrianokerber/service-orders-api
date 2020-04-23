@@ -1,6 +1,6 @@
-package com.kerberinc.serviceordersapi.domain.repository;
+package com.adrianokerber.serviceordersapi.domain.repository;
 
-import com.kerberinc.serviceordersapi.domain.model.ServiceOrder;
+import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

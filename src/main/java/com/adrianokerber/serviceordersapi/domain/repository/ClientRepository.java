@@ -1,8 +1,8 @@
-package com.kerberinc.serviceordersapi.domain.repository;
+package com.adrianokerber.serviceordersapi.domain.repository;
 
 import java.util.List;
 
-import com.kerberinc.serviceordersapi.domain.model.Client;
+import com.adrianokerber.serviceordersapi.domain.model.Client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
