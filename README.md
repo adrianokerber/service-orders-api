@@ -23,6 +23,7 @@ All project dependencies are available at pom.xml since this project uses Maven.
 - [Flyway](https://flywaydb.org/)
 - [Jakarta Persistance (A.k.a: JPA)](https://projects.eclipse.org/projects/ee4j.jpa) used with [Hibernate](https://hibernate.org/) to enable ORM configuration
 - [Jakarta Bean Validation](https://projects.eclipse.org/projects/ee4j.bean-validation)
+- [modelmapper](modelmapper.org)
 
 ## 🚀 Roadmap
 

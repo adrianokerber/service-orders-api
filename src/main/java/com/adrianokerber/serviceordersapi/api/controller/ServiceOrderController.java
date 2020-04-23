@@ -5,10 +5,12 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.adrianokerber.serviceordersapi.api.model.ServiceOrderModel;
 import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
 import com.adrianokerber.serviceordersapi.domain.repository.ServiceOrderRepository;
 import com.adrianokerber.serviceordersapi.domain.service.OrderManagementService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,9 @@ public class ServiceOrderController {
     @Autowired
     private ServiceOrderRepository serviceOrderRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ServiceOrder create(@Valid @RequestBody ServiceOrder serviceOrder) {
@@ -42,11 +47,13 @@ public class ServiceOrderController {
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<ServiceOrder> find(@PathVariable Long orderId) {
+    public ResponseEntity<ServiceOrderModel> find(@PathVariable Long orderId) {
         Optional<ServiceOrder> serviceOrder = serviceOrderRepository.findById(orderId);
 
         if (serviceOrder.isPresent()) {
-            return ResponseEntity.ok(serviceOrder.get());
+            ServiceOrderModel serviceOrderModel = modelMapper.map(serviceOrder, ServiceOrderModel.class);
+
+            return ResponseEntity.ok(serviceOrderModel);
         }
 
         return ResponseEntity.notFound().build();
