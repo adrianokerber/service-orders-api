@@ -1,7 +1,7 @@
 package com.kerberinc.serviceordersapi.domain.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -45,10 +45,10 @@ public class ServiceOrder {
     private ServiceOrderStatus status;
 
     @JsonProperty(access = Access.READ_ONLY)
-    private LocalDateTime startDate;
+    private OffsetDateTime startDate;
 
     @JsonProperty(access = Access.READ_ONLY)
-    private LocalDateTime endDate;
+    private OffsetDateTime endDate;
 
     public Long getId() {
         return this.id;
@@ -90,19 +90,19 @@ public class ServiceOrder {
         this.status = status;
     }
 
-    public LocalDateTime getStartDate() {
+    public OffsetDateTime getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(OffsetDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public OffsetDateTime getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
     }
 

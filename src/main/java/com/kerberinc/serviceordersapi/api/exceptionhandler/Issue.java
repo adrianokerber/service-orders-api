@@ -1,6 +1,6 @@
 package com.kerberinc.serviceordersapi.api.exceptionhandler;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class Issue {
 
     private Integer status;
-    private LocalDateTime date;
+    private OffsetDateTime date;
     private String title;
     private List<Field> fields;
 
@@ -54,11 +54,11 @@ public class Issue {
         this.status = status;
     }
 
-    public LocalDateTime getDate() {
+    public OffsetDateTime getDate() {
         return this.date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(OffsetDateTime date) {
         this.date = date;
     }
 

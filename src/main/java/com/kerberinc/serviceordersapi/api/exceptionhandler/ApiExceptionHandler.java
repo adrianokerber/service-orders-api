@@ -1,6 +1,6 @@
 package com.kerberinc.serviceordersapi.api.exceptionhandler;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import com.kerberinc.serviceordersapi.domain.exception.BusinessLogicException;
@@ -32,7 +32,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         var issue = new Issue();
         issue.setStatus(status.value());
         issue.setTitle(ex.getMessage());
-        issue.setDate(LocalDateTime.now());
+        issue.setDate(OffsetDateTime.now());
 
         return handleExceptionInternal(ex, issue, new HttpHeaders(), status, request);
     }
@@ -53,7 +53,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         var issue = new Issue();
         issue.setStatus(status.value());
         issue.setTitle("Um ou mais campos estão inválidos." + " Faça o preenchimento correto e tente novamente");
-        issue.setDate(LocalDateTime.now());
+        issue.setDate(OffsetDateTime.now());
         issue.setFields(fields);
         
         return super.handleExceptionInternal(ex, issue, headers, status, request);

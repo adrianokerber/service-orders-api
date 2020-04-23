@@ -1,6 +1,6 @@
 package com.kerberinc.serviceordersapi.domain.service;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.kerberinc.serviceordersapi.domain.exception.BusinessLogicException;
 import com.kerberinc.serviceordersapi.domain.model.Client;
@@ -27,7 +27,7 @@ public class OrderManagementService {
 
         serviceOrder.setClient(client);
         serviceOrder.setStatus(ServiceOrderStatus.OPEN);
-        serviceOrder.setStartDate(LocalDateTime.now());
+        serviceOrder.setStartDate(OffsetDateTime.now());
 
         return serviceOrderRepository.save(serviceOrder);
     }
