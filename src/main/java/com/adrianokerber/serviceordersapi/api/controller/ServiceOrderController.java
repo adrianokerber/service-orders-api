@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.adrianokerber.serviceordersapi.api.model.ServiceOrderInput;
 import com.adrianokerber.serviceordersapi.api.model.ServiceOrderModel;
+import com.adrianokerber.serviceordersapi.domain.model.Client;
 import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
 import com.adrianokerber.serviceordersapi.domain.repository.ServiceOrderRepository;
 import com.adrianokerber.serviceordersapi.domain.service.OrderManagementService;
@@ -38,7 +40,9 @@ public class ServiceOrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServiceOrderModel create(@Valid @RequestBody ServiceOrder serviceOrder) {
+    public ServiceOrderModel create(@Valid @RequestBody ServiceOrderInput serviceOrderInput) {
+        ServiceOrder serviceOrder = toEntity(serviceOrderInput);
+
         return toModel(orderManagementService.create(serviceOrder));
     }
 
@@ -68,6 +72,10 @@ public class ServiceOrderController {
         return serviceOrders.stream()
             .map(serviceOrder -> toModel(serviceOrder))
             .collect(Collectors.toList());
+    }
+
+    private ServiceOrder toEntity(ServiceOrderInput serviceOrderInput) {
+        return modelMapper.map(serviceOrderInput, ServiceOrder.class);
     }
 
 }

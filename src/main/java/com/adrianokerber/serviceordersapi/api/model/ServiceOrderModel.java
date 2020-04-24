@@ -8,7 +8,7 @@ import com.adrianokerber.serviceordersapi.domain.model.ServiceOrderStatus;
 public class ServiceOrderModel {
 
     private Long id;
-    private String clientName;
+    private ClientPreviewModel client;
     private String description;
     private BigDecimal price;
     private ServiceOrderStatus status;
@@ -23,12 +23,12 @@ public class ServiceOrderModel {
         this.id = id;
     }
 
-    public String getClientName() {
-        return this.clientName;
+    public ClientPreviewModel getClient() {
+        return this.client;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setClient(ClientPreviewModel client) {
+        this.client = client;
     }
 
     public String getDescription() {
