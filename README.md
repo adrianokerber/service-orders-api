@@ -32,6 +32,7 @@ Roadmap for __2020__.
 - [x] Create Spring project
 - [x] Add MySQL database connection
 - [x] Add DB migration control using Flyway
-- [x] Divide responsabilities among `API` and `Domain` (Business logic)
+- [x] Divide responsabilities between `API` and `Domain` (Business logic)
 - [x] Add ORMs and validations using JPA
-- [ ] Create DTOs to avoid exposing unnecessary or sensitive data
+- [x] Create DTOs to avoid exposing unnecessary or sensitive data
+- [ ] Enhance ClientController to use DTOs as input and output

@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import com.adrianokerber.serviceordersapi.api.model.ServiceOrderInput;
 import com.adrianokerber.serviceordersapi.api.model.ServiceOrderModel;
-import com.adrianokerber.serviceordersapi.domain.model.Client;
 import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
 import com.adrianokerber.serviceordersapi.domain.repository.ServiceOrderRepository;
 import com.adrianokerber.serviceordersapi.domain.service.OrderManagementService;
