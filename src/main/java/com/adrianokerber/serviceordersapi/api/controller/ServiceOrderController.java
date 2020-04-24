@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -50,9 +51,9 @@ public class ServiceOrderController {
         return toCollectionModel(serviceOrderRepository.findAll());
     }
 
-    @GetMapping("/{orderId}")
-    public ResponseEntity<ServiceOrderModel> find(@PathVariable Long orderId) {
-        Optional<ServiceOrder> serviceOrder = serviceOrderRepository.findById(orderId);
+    @GetMapping("/{serviceOrderId}")
+    public ResponseEntity<ServiceOrderModel> find(@PathVariable Long serviceOrderId) {
+        Optional<ServiceOrder> serviceOrder = serviceOrderRepository.findById(serviceOrderId);
 
         if (serviceOrder.isPresent()) {
             ServiceOrderModel serviceOrderModel = toModel(serviceOrder.get());
@@ -61,6 +62,12 @@ public class ServiceOrderController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{serviceOrderId}/finish")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void finish(@PathVariable Long serviceOrderId) {
+        orderManagementService.finish(serviceOrderId);
     }
 
     private ServiceOrderModel toModel(ServiceOrder serviceOrder) {
