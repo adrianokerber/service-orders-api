@@ -23,6 +23,7 @@ import javax.validation.groups.Default;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.adrianokerber.serviceordersapi.domain.ValidationGroups;
+import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
 
 @Entity
 public class ServiceOrder {
@@ -119,6 +120,23 @@ public class ServiceOrder {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public boolean isOpen() {
+        return getStatus().equals(ServiceOrderStatus.OPEN);
+    }
+
+    public boolean isNotOpen() {
+        return !isOpen();
+    }
+
+	public void finish() {
+        if (isNotOpen()) {
+            throw new BusinessLogicException("Ordem de serviço não pode ser finalizada");
+        }
+
+        setStatus(ServiceOrderStatus.FINISHED);
+        setEndDate(OffsetDateTime.now());
+	}
 
     @Override
     public boolean equals(Object o) {
