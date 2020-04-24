@@ -2,7 +2,7 @@
 
 This project is a [Spring](https://spring.io/) REST API developed based on the free course from AlgaWorks.
 
-The API connects to a MySQL database (DB).
+The API connects to a MySQL database (DB) and we used [Postman](https://www.postman.com/) as the API client.
 
 ## 🛠 First steps
 
@@ -36,3 +36,4 @@ Roadmap for __2020__.
 - [x] Add ORMs and validations using JPA
 - [x] Create DTOs to avoid exposing unnecessary or sensitive data
 - [ ] Enhance ClientController to use DTOs as input and output
+- [ ] Add ServiceOrders cancellation

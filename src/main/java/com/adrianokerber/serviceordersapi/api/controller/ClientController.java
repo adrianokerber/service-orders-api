@@ -38,7 +38,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/{clientId}")
-	public ResponseEntity<Client> getClient(@PathVariable Long clientId) {
+	public ResponseEntity<Client> find(@PathVariable Long clientId) {
 		Optional<Client> client = clientRepository.findById(clientId);
 
 		if (client.isPresent()) {
