@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
+import com.adrianokerber.serviceordersapi.domain.exception.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -24,6 +25,18 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Autowired
     private MessageSource messageSource;
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex, WebRequest request) {
+        var status = HttpStatus.NOT_FOUND;
+
+        var issue = new Issue();
+        issue.setStatus(status.value());
+        issue.setTitle(ex.getMessage());
+        issue.setDate(OffsetDateTime.now());
+
+        return handleExceptionInternal(ex, issue, new HttpHeaders(), status, request);
+    }
 
     @ExceptionHandler(BusinessLogicException.class)
     public ResponseEntity<Object> handleBusinessLogicException(BusinessLogicException ex, WebRequest request) {

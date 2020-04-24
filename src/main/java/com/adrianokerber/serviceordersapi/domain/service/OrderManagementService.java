@@ -3,6 +3,7 @@ package com.adrianokerber.serviceordersapi.domain.service;
 import java.time.OffsetDateTime;
 
 import com.adrianokerber.serviceordersapi.domain.exception.BusinessLogicException;
+import com.adrianokerber.serviceordersapi.domain.exception.EntityNotFoundException;
 import com.adrianokerber.serviceordersapi.domain.model.Client;
 import com.adrianokerber.serviceordersapi.domain.model.Comment;
 import com.adrianokerber.serviceordersapi.domain.model.ServiceOrder;
@@ -39,7 +40,7 @@ public class OrderManagementService {
 
     public Comment addComment(Long serviceOrderId, String description) {
         ServiceOrder serviceOrder = serviceOrderRepository.findById(serviceOrderId)
-            .orElseThrow(() -> new BusinessLogicException("Ordem de serviço não encontrada"));
+            .orElseThrow(() -> new EntityNotFoundException("Ordem de serviço não encontrada"));
 
         Comment comment = new Comment();
         comment.setCreationDate(OffsetDateTime.now());
