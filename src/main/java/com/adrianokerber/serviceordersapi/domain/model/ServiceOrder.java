@@ -2,6 +2,8 @@ package com.adrianokerber.serviceordersapi.domain.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -49,6 +52,9 @@ public class ServiceOrder {
 
     @JsonProperty(access = Access.READ_ONLY)
     private OffsetDateTime endDate;
+
+    @OneToMany(mappedBy = "serviceOrder")
+    private List<Comment> comments = new ArrayList<>();
 
     public Long getId() {
         return this.id;
@@ -104,6 +110,14 @@ public class ServiceOrder {
 
     public void setEndDate(OffsetDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public List<Comment> getComments() {
+        return this.comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override
