@@ -35,5 +35,5 @@ Roadmap for __2020__.
 - [x] Divide responsabilities between `API` and `Domain` (Business logic)
 - [x] Add ORMs and validations using JPA
 - [x] Create DTOs to avoid exposing unnecessary or sensitive data
-- [ ] Enhance ClientController to use DTOs as input and output
+- [x] Enhance ClientController to use DTOs as input and output
 - [ ] Add ServiceOrders cancellation
