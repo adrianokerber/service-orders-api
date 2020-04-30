@@ -66,19 +66,20 @@ public class ClientController {
 	}
 
 	@PutMapping("/{clientId}")
-	public ResponseEntity<Client> update(
+	public ResponseEntity<ClientModel> update(
 		@PathVariable Long clientId,
-		@Valid @RequestBody Client client
+		@Valid @RequestBody ClientInput clientInput
 	) {
 		
 		if (!clientRepository.existsById(clientId)) {
 			return ResponseEntity.notFound().build();
 		}
 
+		Client client = toEntity(clientInput);
 		client.setId(clientId);
-		client = clientStorageService.create(client);
+		ClientModel clientModel = toModel(clientStorageService.create(client));
 
-		return ResponseEntity.ok(client);
+		return ResponseEntity.ok(clientModel);
 
 	}
 
