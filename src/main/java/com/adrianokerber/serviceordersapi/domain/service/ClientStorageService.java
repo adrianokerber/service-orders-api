@@ -13,7 +13,7 @@ public class ClientStorageService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client save(Client client) {
+    public Client create(Client client) {
         Client storedClient = clientRepository.findByEmail(client.getEmail());
 
         if (storedClient != null && !storedClient.equals(client)) {

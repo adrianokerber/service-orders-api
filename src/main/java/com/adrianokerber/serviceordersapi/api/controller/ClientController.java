@@ -2,13 +2,17 @@ package com.adrianokerber.serviceordersapi.api.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.adrianokerber.serviceordersapi.api.model.ClientInput;
+import com.adrianokerber.serviceordersapi.api.model.ClientModel;
 import com.adrianokerber.serviceordersapi.domain.model.Client;
 import com.adrianokerber.serviceordersapi.domain.repository.ClientRepository;
 import com.adrianokerber.serviceordersapi.domain.service.ClientStorageService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,17 +36,22 @@ public class ClientController {
 	@Autowired
 	private ClientStorageService clientStorageService;
 
+	@Autowired
+	private ModelMapper modelMapper;
+
     @GetMapping
-    public List<Client> list() {
-		return clientRepository.findAll();
+    public List<ClientModel> list() {
+		return toCollectionModel(clientRepository.findAll());
 	}
 	
 	@GetMapping("/{clientId}")
-	public ResponseEntity<Client> find(@PathVariable Long clientId) {
+	public ResponseEntity<ClientModel> find(@PathVariable Long clientId) {
 		Optional<Client> client = clientRepository.findById(clientId);
 
 		if (client.isPresent()) {
-			return ResponseEntity.ok(client.get());
+			ClientModel clientModel = toModel(client.get());
+
+			return ResponseEntity.ok(clientModel);
 		}
 		
 		return ResponseEntity.notFound().build();
@@ -50,8 +59,10 @@ public class ClientController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Client add(@Valid @RequestBody Client client) {
-		return clientStorageService.save(client);
+	public ClientModel create(@Valid @RequestBody ClientInput clientInput) {
+		Client client = toEntity(clientInput);
+
+		return toModel(clientStorageService.create(client));
 	}
 
 	@PutMapping("/{clientId}")
@@ -65,7 +76,7 @@ public class ClientController {
 		}
 
 		client.setId(clientId);
-		client = clientStorageService.save(client);
+		client = clientStorageService.create(client);
 
 		return ResponseEntity.ok(client);
 
@@ -82,6 +93,20 @@ public class ClientController {
 
 		return ResponseEntity.noContent().build();
 
+	}
+
+	private ClientModel toModel(Client client) {
+		return modelMapper.map(client, ClientModel.class);
+	}
+
+	private List<ClientModel> toCollectionModel(List<Client> clients) {
+		return clients.stream()
+			.map(client -> toModel(client))
+			.collect(Collectors.toList());
+	}
+
+	private Client toEntity(ClientInput clientInput) {
+		return modelMapper.map(clientInput, Client.class);
 	}
 
 }
