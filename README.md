@@ -37,3 +37,4 @@ Roadmap for __2020__.
 - [x] Create DTOs to avoid exposing unnecessary or sensitive data
 - [x] Enhance ClientController to use DTOs as input and output
 - [ ] Add ServiceOrders cancellation
+- [ ] Add internacionalization (I18N)
