@@ -8,7 +8,10 @@ The API connects to a MySQL database (DB) and we used [Postman](https://www.post
 
 - Install Java SDK (JDK 11 >) and set `JAVA_HOME` environment variable to your system pointing to the SDK path. Note: We developed using Java 14
 - Install [Spring Tools](https://spring.io/tools) based on your prefered IDE.
-    - Personal note: we developed using [VSCode](https://code.visualstudio.com/) but we recommend the [IntelliJ](https://www.jetbrains.com/idea/) based on its sugar 😉
+    - Personal note: we developed using [VSCode](https://code.visualstudio.com/) but we recommend the [IntelliJ Ultimate](https://www.jetbrains.com/idea/) based on its Java sugar 😉
+- On VSCode
+    * Call commands\` window by pressing: `Ctrl + Shift + P`
+    * Run "`Spring Initializr: Edit starters`" to configure initialization scripts
 - Configure a MySQL DB to run locally based on `application.properties` configuration or edit to configure another MySQL database
 
 ## ⛏ Usage
